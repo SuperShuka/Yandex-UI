@@ -10,10 +10,10 @@ public class ModelVariants : MonoBehaviour
     private static GameObject _currentSelected;
     [SerializeField] private TMP_Dropdown _dropdown;
 
-    private void Start()
+    private void Awake()
     {
         _currentSelected = _models[0];
-        GetComponent<MaterialManager>().Renderer = _currentSelected.GetComponent<Renderer>();
+        GetComponent<MaterialManager>().renderer = _currentSelected.GetComponent<Renderer>();
 
         List<TMP_Dropdown.OptionData> _optionDataList = new List<TMP_Dropdown.OptionData>();
         foreach (var item in _models)
@@ -32,8 +32,8 @@ public class ModelVariants : MonoBehaviour
     {
         _currentSelected.SetActive(false);
         _currentSelected = _models[index];
-        GetComponent<MaterialManager>().SetMaterial();
-        GetComponent<MaterialManager>().Renderer = _currentSelected.GetComponent<Renderer>();
+        GetComponent<MaterialManager>().SetMaterial(GetComponent<MaterialManager>()._currentMaterial);
+        GetComponent<MaterialManager>().renderer = _currentSelected.GetComponent<Renderer>();
         _currentSelected.SetActive(true);
     }
 }

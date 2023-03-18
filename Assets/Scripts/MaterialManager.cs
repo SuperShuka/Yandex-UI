@@ -7,18 +7,20 @@ using UnityEngine.Serialization;
 public class MaterialManager : MonoBehaviour
 {
 
-    public Renderer Renderer;
-    private Material _currentMaterial;
+    public Renderer renderer;
+    public Material _currentMaterial;
+    [SerializeField] private BoxCreator _coinBoxCreator;
 
-    public void SetMaterial()
+    private void Start()
     {
-        Renderer.material = _currentMaterial;
+        _currentMaterial = renderer.material;
     }
 
     public void SetMaterial(Material material)
     {
         _currentMaterial = material;
-        Renderer.material = material;
+        renderer.material = material;
+        _coinBoxCreator.CoinBoxMaterial = material;
     }
 
 }

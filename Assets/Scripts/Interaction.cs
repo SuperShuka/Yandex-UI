@@ -18,6 +18,10 @@ public class Interaction : MonoBehaviour
                     clickable.Hit();
                 }
             }
+            else if (hit.collider.TryGetComponent(out CoinBox box))
+            {
+                box.Collect();
+            }
         }
     }
 }
